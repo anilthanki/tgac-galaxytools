@@ -24,8 +24,8 @@ my $usage = "
 
 my $transcripts = shift or die $usage;
 
-my $gene_id="";
-my $mrna_id="";
+my $gene_id=0;
+my $mrna_id=0;
 
 	our %gene_hash;
 	our %mRNA_hash;

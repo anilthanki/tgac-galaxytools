@@ -38,8 +38,11 @@ sub genetoJSON(){
     }
 
     $gene{'genome'} = $gff2JSON::genome;
+    $gene{'member_id'} = $gff2JSON::gene_id;
 
+    $gff2JSON::gene_id++;
     $gff2JSON::gene_hash{$gene{'ID'}} = \%gene;
+
 
 }
 
