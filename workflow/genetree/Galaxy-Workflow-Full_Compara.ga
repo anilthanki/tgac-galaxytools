@@ -1,0 +1,816 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "Full Compara", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "CDS"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 298.8000183105469, 
+                "top": 572.6437530517578
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"CDS\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "bb27b4f9-d638-448c-a8a8-776a183c63dc"
+        }, 
+        "1": {
+            "annotation": "", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Gene JSON"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 297.0187683105469, 
+                "top": 763.4250030517578
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Gene JSON\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "96ed8b96-c88a-4411-9db1-20cd2cf8a081"
+        }, 
+        "2": {
+            "annotation": "", 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "species "
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 297.1125183105469, 
+                "top": 1291.4812774658203
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"species \"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "6946a0cf-9694-4708-8f64-01a643bcda24"
+        }, 
+        "3": {
+            "annotation": "", 
+            "id": 3, 
+            "input_connections": {
+                "input1": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "transeq", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 508.8750228881836, 
+                "top": 265.7062530517578
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/emboss_5/EMBOSS: transeq101/5.0.0", 
+            "tool_state": "{\"trim\": \"\\\"no\\\"\", \"__page__\": 0, \"input1\": \"null\", \"out_format1\": \"\\\"fasta\\\"\", \"frame\": \"\\\"1\\\"\", \"regions\": \"\\\"\\\"\", \"clean\": \"\\\"no\\\"\", \"table\": \"\\\"0\\\"\", \"alternative\": \"\\\"no\\\"\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "5.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "64e322a6-342b-4036-b202-1601e926b457"
+        }, 
+        "4": {
+            "annotation": "", 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 3, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "NCBI BLAST+ makeblastdb", 
+            "outputs": [
+                {
+                    "name": "outfile", 
+                    "type": "data"
+                }
+            ], 
+            "position": {
+                "left": 856.5562896728516, 
+                "top": 314.62500762939453
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outfile"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/0.1.06", 
+            "tool_state": "{\"__page__\": 0, \"mask_data_file\": \"null\", \"title\": \"\\\"\\\"\", \"dbtype\": \"\\\"prot\\\"\", \"__rerun_remap_job_id__\": null, \"hash_index\": \"\\\"True\\\"\", \"tax\": \"{\\\"taxselect\\\": \\\"\\\", \\\"__current_case__\\\": 0}\", \"input_file\": \"null\", \"parse_seqids\": \"\\\"False\\\"\"}", 
+            "tool_version": "0.1.06", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "27255689-ec8d-4616-97ba-f26deae35b04"
+        }, 
+        "5": {
+            "annotation": "", 
+            "id": 5, 
+            "input_connections": {
+                "db_opts|histdb": {
+                    "id": 4, 
+                    "output_name": "outfile"
+                }, 
+                "query": {
+                    "id": 3, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "NCBI BLAST+ blastp", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1174.0313110351562, 
+                "top": 197.6437530517578
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.1.06", 
+            "tool_state": "{\"evalue_cutoff\": \"\\\"0.001\\\"\", \"__page__\": 0, \"adv_opts\": \"{\\\"adv_optional_id_files_opts\\\": {\\\"adv_optional_id_files_opts_selector\\\": \\\"none\\\", \\\"__current_case__\\\": 0}, \\\"matrix\\\": \\\"BLOSUM62\\\", \\\"adv_opts_selector\\\": \\\"advanced\\\", \\\"filter_query\\\": \\\"False\\\", \\\"word_size\\\": \\\"0\\\", \\\"__current_case__\\\": 1, \\\"parse_deflines\\\": \\\"False\\\", \\\"qcov_hsp_perc\\\": \\\"0.0\\\", \\\"max_hits\\\": \\\"2\\\"}\", \"__rerun_remap_job_id__\": null, \"blast_type\": \"\\\"blastp\\\"\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"histdb\\\", \\\"subject\\\": \\\"\\\", \\\"histdb\\\": null, \\\"__current_case__\\\": 1, \\\"database\\\": \\\"\\\"}\", \"output\": \"{\\\"out_format\\\": \\\"6\\\", \\\"__current_case__\\\": 0}\", \"query\": \"null\"}", 
+            "tool_version": "0.1.06", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "093c0820-da14-4024-933e-aa022bc63fbc"
+        }, 
+        "6": {
+            "annotation": "", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "blast_parser", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1402.5938110351562, 
+                "top": 395.6625061035156
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "blast_parser_wrapper", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "0.1.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "b8f969a4-fc3a-4c00-876c-74e027eb9f4e"
+        }, 
+        "7": {
+            "annotation": "", 
+            "id": 7, 
+            "input_connections": {
+                "inputFile": {
+                    "id": 6, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "hcluster_sg", 
+            "outputs": [
+                {
+                    "name": "outputFile", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1581.5625610351562, 
+                "top": 201.65625
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "hcluster_sg", 
+            "tool_state": "{\"__page__\": 0, \"c\": \"\\\"True\\\"\", \"b\": \"\\\"0.1\\\"\", \"__rerun_remap_job_id__\": null, \"m\": \"\\\"500\\\"\", \"C\": \"null\", \"O\": \"{\\\"O_selector\\\": \\\"\\\", \\\"__current_case__\\\": 1}\", \"L\": \"\\\"2\\\"\", \"s\": \"\\\"0.5\\\"\", \"w\": \"\\\"20\\\"\", \"inputFile\": \"null\"}", 
+            "tool_version": "0.5.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "c199d6a9-7f90-4594-b44f-2a93264d082e"
+        }, 
+        "8": {
+            "annotation": "", 
+            "id": 8, 
+            "input_connections": {
+                "inputFile": {
+                    "id": 7, 
+                    "output_name": "outputFile"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "hcluster_sg_parser", 
+            "outputs": [
+                {
+                    "name": "ids_lists", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1789.5750732421875, 
+                "top": 322.65000915527344
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "hcluster_sg_parser", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"inputFile\": \"null\"}", 
+            "tool_version": "0.1.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "9e1c96cd-b7fc-4590-86dc-5466b7b94dc3"
+        }, 
+        "9": {
+            "annotation": "", 
+            "id": 9, 
+            "input_connections": {
+                "fasta_input": {
+                    "id": 3, 
+                    "output_name": "out_file1"
+                }, 
+                "identifiers": {
+                    "id": 8, 
+                    "output_name": "ids_lists"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Filter by FASTA IDs", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 873.0750427246094, 
+                "top": 615.6562652587891
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "1 : Filter by Fasta ID"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/1.0", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"identifiers\": \"null\", \"fasta_input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "0d48b6ad-1e7c-4c91-befb-90af64344250"
+        }, 
+        "10": {
+            "annotation": "", 
+            "id": 10, 
+            "input_connections": {
+                "input1": {
+                    "id": 8, 
+                    "output_name": "ids_lists"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Trim", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 571.481273651123, 
+                "top": 941.9812774658203
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "trimmer", 
+            "tool_state": "{\"__page__\": 0, \"input1\": \"null\", \"end\": \"\\\"-2\\\"\", \"fastq\": \"\\\"\\\"\", \"ignore\": \"null\", \"start\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"col\": \"\\\"0\\\"\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "2f8b4463-4222-4859-ac49-75d6279a54ba"
+        }, 
+        "11": {
+            "annotation": "", 
+            "id": 11, 
+            "input_connections": {
+                "input": {
+                    "id": 9, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "T-COFFEE", 
+            "outputs": [
+                {
+                    "name": "dnd", 
+                    "type": "nhx"
+                }, 
+                {
+                    "name": "msf_aln", 
+                    "type": "msf"
+                }, 
+                {
+                    "name": "clustalw_aln", 
+                    "type": "clustalw"
+                }, 
+                {
+                    "name": "pir_aln", 
+                    "type": "pir"
+                }, 
+                {
+                    "name": "fasta_aln", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "phylip", 
+                    "type": "phyloxml"
+                }, 
+                {
+                    "name": "pir_seq", 
+                    "type": "pir"
+                }, 
+                {
+                    "name": "fasta_seq", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "score_ascii", 
+                    "type": "ascii"
+                }, 
+                {
+                    "name": "score_html", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 1234.518798828125, 
+                "top": 613.6312713623047
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionclustalw_aln": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "clustalw_aln"
+                }, 
+                "HideDatasetActiondnd": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "dnd"
+                }, 
+                "HideDatasetActionfasta_aln": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fasta_aln"
+                }, 
+                "HideDatasetActionfasta_seq": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "fasta_seq"
+                }, 
+                "HideDatasetActionmsf_aln": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "msf_aln"
+                }, 
+                "HideDatasetActionphylip": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "phylip"
+                }, 
+                "HideDatasetActionpir_aln": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "pir_aln"
+                }, 
+                "HideDatasetActionpir_seq": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "pir_seq"
+                }, 
+                "HideDatasetActionscore_ascii": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "score_ascii"
+                }, 
+                "HideDatasetActionscore_html": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "score_html"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/ayllon/tcoffee/T_coffee/10.00.r1613", 
+            "tool_state": "{\"format_output_pir_aln\": \"\\\"no\\\"\", \"format_output_dnd\": \"\\\"yes\\\"\", \"__page__\": 0, \"format_output_fasta_aln\": \"\\\"yes\\\"\", \"format_output_clustalw_aln\": \"\\\"no\\\"\", \"__rerun_remap_job_id__\": null, \"format_output_score_html\": \"\\\"no\\\"\", \"format_output_phylip\": \"\\\"no\\\"\", \"format_output_score_ascii\": \"\\\"no\\\"\", \"method03\": \"null\", \"input\": \"null\", \"format_output_pir_seq\": \"\\\"no\\\"\", \"method02\": \"null\", \"method01\": \"null\", \"format_output_fasta_seq\": \"\\\"yes\\\"\", \"format_output_msf_aln\": \"\\\"no\\\"\"}", 
+            "tool_version": "10.00.r1613", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "7b73117a-72bd-4ec1-9204-dffb6c80e4e6"
+        }, 
+        "12": {
+            "annotation": "", 
+            "id": 12, 
+            "input_connections": {
+                "fasta_input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "identifiers": {
+                    "id": 10, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Filter by FASTA IDs", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 879.0750427246094, 
+                "top": 923.1375274658203
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }, 
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "2 : Filter by Fasta ID"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/1.0", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"identifiers\": \"null\", \"fasta_input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "dee80607-acb7-449d-aaba-16a472c9aa79"
+        }, 
+        "13": {
+            "annotation": "", 
+            "id": 13, 
+            "input_connections": {
+                "input": {
+                    "id": 11, 
+                    "output_name": "fasta_aln"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FASTA Width", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1512.6000366210938, 
+                "top": 586.6687774658203
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_formatter/cshl_fasta_formatter/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"input\": \"null\", \"__rerun_remap_job_id__\": null, \"width\": \"\\\"0\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "699358ec-26b8-450d-bf37-b766a295263c"
+        }, 
+        "14": {
+            "annotation": "", 
+            "id": 14, 
+            "input_connections": {
+                "input1": {
+                    "id": 12, 
+                    "output_name": "output"
+                }, 
+                "input2": {
+                    "id": 11, 
+                    "output_name": "fasta_aln"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "tranalign", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1268.5313110351562, 
+                "top": 1210.0125274658203
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/emboss_5/EMBOSS: tranalign100/5.0.0", 
+            "tool_state": "{\"input2\": \"null\", \"__page__\": 0, \"input1\": \"null\", \"out_format1\": \"\\\"fasta\\\"\", \"__rerun_remap_job_id__\": null, \"table\": \"\\\"0\\\"\"}", 
+            "tool_version": "5.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "40bee9c1-6573-44f6-860e-792434eb3060"
+        }, 
+        "15": {
+            "annotation": "", 
+            "id": 15, 
+            "input_connections": {
+                "input": {
+                    "id": 13, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FASTA-to-Tabular", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1554.5625610351562, 
+                "top": 776.6250152587891
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.0", 
+            "tool_state": "{\"input\": \"null\", \"keep_first\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"descr_columns\": \"\\\"1\\\"\", \"__page__\": 0}", 
+            "tool_version": "1.1.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "2c885ef1-9d15-4078-90da-179b40286242"
+        }, 
+        "16": {
+            "annotation": "", 
+            "id": 16, 
+            "input_connections": {
+                "aln": {
+                    "id": 14, 
+                    "output_name": "out_file1"
+                }, 
+                "species_tree": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "TreeBest best", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "nhx"
+                }, 
+                {
+                    "name": "output_nj_dn", 
+                    "type": "nhx"
+                }
+            ], 
+            "position": {
+                "left": 1717.5750732421875, 
+                "top": 1358.1563262939453
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionoutput_nj_dn": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_nj_dn"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "treebest_best_wrapper", 
+            "tool_state": "{\"A\": \"\\\"False\\\"\", \"aln\": \"null\", \"C\": \"null\", \"b\": \"\\\"0.01\\\"\", \"d\": \"\\\"0.15\\\"\", \"g\": \"\\\"False\\\"\", \"F\": \"\\\"11\\\"\", \"__page__\": 0, \"s\": \"\\\"False\\\"\", \"K\": \"{\\\"__current_case__\\\": 1, \\\"K_selector\\\": \\\"yes\\\"}\", \"A_option\": \"{\\\"A_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 1}\", \"c\": \"\\\"2\\\"\", \"L\": \"\\\"0.2\\\"\", \"P\": \"\\\"False\\\"\", \"S\": \"\\\"False\\\"\", \"r\": \"\\\"False\\\"\", \"species_tree\": \"null\", \"N\": \"\\\"False\\\"\", \"__rerun_remap_job_id__\": null, \"l\": \"\\\"0.1\\\"\"}", 
+            "tool_version": "1.9.2", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "81de31d9-ce0f-4808-9355-94a6fef5fd37"
+        }, 
+        "17": {
+            "annotation": "", 
+            "id": 17, 
+            "input_connections": {
+                "input": {
+                    "id": 15, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "t_coffee_to_cigar", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1821.5626220703125, 
+                "top": 723.6375274658203
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "t_coffee_to_cigar_wrapper", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "0.1.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "d0f84acd-6bf9-48c0-88bb-6701eba9f879"
+        }, 
+        "18": {
+            "annotation": "", 
+            "id": 18, 
+            "input_connections": {
+                "input1": {
+                    "id": 17, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Trim", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 2028.1251220703125, 
+                "top": 570.1250152587891
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "trimmer", 
+            "tool_state": "{\"__page__\": 0, \"input1\": \"null\", \"end\": \"\\\"-2\\\"\", \"fastq\": \"\\\"\\\"\", \"ignore\": \"null\", \"start\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"col\": \"\\\"1\\\"\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "48751aff-51da-4139-b3d3-0997d6b2ea4f"
+        }, 
+        "19": {
+            "annotation": "", 
+            "id": 19, 
+            "input_connections": {
+                "alignmentFile": {
+                    "id": 18, 
+                    "output_name": "out_file1"
+                }, 
+                "genesFile": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "treeFile": {
+                    "id": 16, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "aequatus parser", 
+            "outputs": [
+                {
+                    "name": "outputFile", 
+                    "type": "aequatus"
+                }
+            ], 
+            "position": {
+                "left": 2217.5626220703125, 
+                "top": 889.6500396728516
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutputFile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "outputFile"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "aequatus-generator", 
+            "tool_state": "{\"__page__\": 0, \"treeFile\": \"null\", \"__rerun_remap_job_id__\": null, \"alignmentFile\": \"null\", \"genesFile\": \"null\"}", 
+            "tool_version": "0.1.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "e4203f33-2702-4cc9-a8aa-b34c63523dac"
+        }
+    }, 
+    "uuid": "3b9627b9-0b3a-4e24-9b8c-e15256632523"
+}
