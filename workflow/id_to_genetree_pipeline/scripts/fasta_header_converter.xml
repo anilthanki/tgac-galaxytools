@@ -1,0 +1,37 @@
+<tool id="fasta-converter" name="fasta header converter" version="0.1.1">
+    <description>Adds species information at the end of the fasta header</description>
+     <requirements>
+        <requirement type="package" version="2.90">perl_json</requirement>
+    </requirements>
+    <command>
+    <![CDATA[
+python $__tool_directory__/fasta_header_converter.py 
+-f $fastaFile 
+-j $genesFile
+> $outputFile
+    ]]>
+    </command>
+    <inputs>
+        <param name="fastaFile" type="data" format="fasta" label="Fasta file" help="Fasta file with transcript id as fasta id" />        
+        <param name="genesFile" type="data" format="json" label="Gene file" help="Gene file in JSON format" />
+    </inputs>
+    <outputs>
+        <data type="data" format="fasta" name="outputFile" label="${tool.name} on ${on_string}" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="fastaFile" ftype="nhx" value="test.fasta" />
+            <param name="genesFile" ftype="json" value="test.json" />
+            <param name="outputFile" ftype="fasta" value="out.fasta" />
+        </test>
+    </tests>
+    <help>
+    <![CDATA[
+
+Simple converter for Fasta which add species information at the end of the fasta header for usage in TreeBest.
+
+    ]]>
+    </help>
+    <citations>
+    </citations>
+</tool>
