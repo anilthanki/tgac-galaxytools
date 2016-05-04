@@ -20,6 +20,7 @@ def read_fasta(fp):
             if name: 
             	sequence_dict[name] = ''.join(seq)
             name, seq = line.replace(">", ""), []
+            name = name.split(" ")[0]
         else:
             seq.append(line)
     if name: 

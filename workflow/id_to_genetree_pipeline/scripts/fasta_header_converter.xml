@@ -1,4 +1,4 @@
-<tool id="fasta-converter" name="fasta header converter" version="0.1.1">
+<tool id="fasta-header-converter" name="fasta header converter" version="0.1.1">
     <description>Adds species information at the end of the fasta header</description>
      <requirements>
         <requirement type="package" version="2.90">perl_json</requirement>
@@ -28,7 +28,7 @@ python $__tool_directory__/fasta_header_converter.py
     <help>
     <![CDATA[
 
-Simple converter for Fasta which add species information at the end of the fasta header for usage in TreeBest.
+Simple converter for Fasta, which trims header and add species information at the end of the fasta header from Gene Feature Information file in JSON format for usage in TreeBest.
 
     ]]>
     </help>
