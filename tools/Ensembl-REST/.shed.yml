@@ -8,10 +8,9 @@ remote_repository_url: https://github.com/TGAC/tgac-galaxytools/tree/master/tool
 type: unrestricted
 auto_tool_repositories:
   name_template: "Ensembl {{ tool_id }}"
-  description_template: "Wrapper for Ensebl-REST application {{ tool_name }}."
+  description_template: "Wrapper for Ensebl-REST {{ tool_name }}."
 suite:
-  name: "suite_Ensembl-REST"
+  name: "Ensembl-REST suite"
   description: "A suite of Galaxy tools designed to work with Ensembl REST API."
   long_description: |
       http://rest.ensembl.org
-exclude:
