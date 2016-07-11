@@ -4,6 +4,6 @@ description: treebest_best_wrapper
 long_description: |
     Generate a phylogenetic tree using CDS alignment and species tree.
 name: treebest_best_wrapper 
-owner: tgac
+owner: Earlham Institute 
 remote_repository_url: https://github.com/TGAC/tgac-galaxytools/tree/master/tools/TreeBest
 typea unrestricted

@@ -6,6 +6,6 @@ long_description: |
     
     https://github.com/douglasgscofield/hcluster
 name: hcluster_sg
-owner: tgac
+owner: Earlham Institute 
 remote_repository_url: https://github.com/TGAC/tgac-galaxytools/tree/master/tools/hcluster_sg
 type: unrestricted
