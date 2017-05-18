@@ -93,8 +93,8 @@
 
                  
                 <div id="search_div">
-                    <div id="families">
-                    </div>
+                    <input type=text id="seach_box">
+                    <button onclick="search_for_gene()">Search</button>
                 </div>
 
                 <div id="settings_div">
@@ -199,6 +199,11 @@
                     <i style="color: white;" class="fa fa-exchange fa-3x"> </i>
                 </div>
             </td>
+        </tr>
+        <tr>
+        <td>
+        <div id="seach_results" style="overflow:scroll;height: 500px;"></div>
+        </td>
         </tr>
         </tbody>
     </table>
