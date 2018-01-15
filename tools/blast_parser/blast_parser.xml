@@ -7,7 +7,9 @@
 python '$__tool_directory__/blast_parser.py'
 -i '$input'
 -o '$output'
-#if $reciprocal
+#if $ensembl_conditional.ensembl == 'e'
+    -e '$ensembl_conditional.ensembl_version'
+#else if $ensembl_conditional.reciprocal
     -r
 #end if
 ]]>
@@ -15,7 +17,22 @@ python '$__tool_directory__/blast_parser.py'
 
     <inputs>
         <param name="input" type="data" format="tabular" label="Tabular data" help="BLAST 12 column tabular format data"/>
-        <param name="reciprocal" type="boolean" checked="false" label="Reciprocal results" help="returns only reciprocal results"/>
+         <conditional name="ensembl_conditional">
+            <param argument="ensembl" type="select" label="Ensembl Params" help="returns results which fulfills Ensembl conditions mentioned below">
+                <option value="e" selected="true">Yes</option>
+                <option value="">No</option>
+            </param>
+            <when value="e">
+                <param name="ensembl_version" argument="ensembl_v" type="select" label="Choose the workflow iteration" help="for iteration 1 returns results which are either reciprocal BLAST hit or having BLAST Score Ratio more than 0.33 and iteration 2 will return results having BLAST Score Ratio (BSR) more than 0.11">
+                    <option value="1" selected="true">1 - (Recioprocal BLAST Hit or BSR > 0.33)</option>
+                    <option value="2">2 - (BSR > 0.11)</option>
+                </param>
+            </when>
+
+            <when value="">
+                <param name="reciprocal" type="boolean" checked="false" label="Reciprocal results" help="returns only reciprocal results"/>
+            </when>
+        </conditional>
     </inputs>
 
     <outputs>
@@ -36,7 +53,9 @@ python '$__tool_directory__/blast_parser.py'
     </tests>
     <help>
 <![CDATA[
-Simple tool to convert a 12- or 24-column BLAST output into a 3-column format (qseqid, sseqid, round(-1 * log10(evalue)/2)) usable as input for the hcluster_sg tool.
+Simple tool to convert a 24-column BLAST output into a 3-column format (qseqid, sseqid, round(-1 * log10(evalue)/2)) usable as input for the hcluster_sg tool. It also has filtered option where it considers either Ensembl parameters mentioned in `"EnsemblCompara GeneTrees"`_ or has a filter for reciprocal BLAST.
+
+.. _"EnsemblCompara GeneTrees": http://genome.cshlp.org/content/19/2/327.long
 ]]>
     </help>
     <citations>
