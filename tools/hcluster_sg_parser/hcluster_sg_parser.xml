@@ -9,7 +9,8 @@ python '$__tool_directory__/hcluster_sg_parser.py' '$inputFile'
 #if str($max_elems)
     -M $max_elems
 #end if
-'$discarded'
+'$discarded_min'
+'$discarded_max'
 ]]>
     </command>
     <inputs>
@@ -21,7 +22,8 @@ python '$__tool_directory__/hcluster_sg_parser.py' '$inputFile'
         <collection name="ids_lists" type="list" label="${tool.name} on ${on_string}">
             <discover_datasets pattern="(?P&lt;designation&gt;.+)_output\.txt" ext="txt" />
         </collection>
-        <data name="discarded" format="txt" label="${tool.name} on ${on_string}: discarded IDs" />
+        <data name="discarded_min" format="txt" label="${tool.name} on ${on_string}: discarded IDs less than specified" />
+        <data name="discarded_max" format="txt" label="${tool.name} on ${on_string}: discarded IDs more than specified" />
     </outputs>
     <tests>
         <test>
