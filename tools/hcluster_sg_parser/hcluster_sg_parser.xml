@@ -29,36 +29,39 @@ python '$__tool_directory__/hcluster_sg_parser.py' '$inputFile'
         <test>
             <param name="inputFile" ftype="tabular" value="hcluster_sg.tabular" />
             <output_collection name="ids_lists" type="list">
-                <element name="0" file="0_output.txt" ftype="txt" />
-                <element name="1" file="1_output.txt" ftype="txt" />
-                <element name="2" file="2_output.txt" ftype="txt" />
-                <element name="3" file="3_output.txt" ftype="txt" />
+                <element name="0" file="0.txt" ftype="txt" />
+                <element name="1" file="1.txt" ftype="txt" />
+                <element name="2" file="2.txt" ftype="txt" />
+                <element name="3" file="3.txt" ftype="txt" />
             </output_collection>
-            <output name="discarded" file="empty.txt" />
+            <output name="discarded_min" file="empty.txt" />
+            <output name="discarded_max" file="empty.txt" />
         </test>
         <test>
             <param name="inputFile" ftype="tabular" value="hcluster_sg.tabular" />
             <param name="min_elems" value="6" />
             <output_collection name="ids_lists" type="list">
-                <element name="0" file="0_output.txt" ftype="txt" />
-                <element name="1" file="1_output.txt" ftype="txt" />
+                <element name="0" file="5.txt" ftype="txt" />
+                <element name="1" file="6.txt" ftype="txt" />
             </output_collection>
-            <output name="discarded" file="discarded.txt" />
+            <output name="discarded_min" file="discarded.txt" />
+            <output name="discarded_max" file="empty.txt" />
         </test>
         <test>
             <param name="inputFile" ftype="tabular" value="hcluster_sg1.txt" />
             <output_collection name="ids_lists" type="list">
-                <element name="0" file="hcluster_sg1_0_output.txt" ftype="txt" />
-                <element name="1" file="hcluster_sg1_1_output.txt" ftype="txt" />
-                <element name="2" file="hcluster_sg1_2_output.txt" ftype="txt" />
-                <element name="3" file="hcluster_sg1_3_output.txt" ftype="txt" />
-                <element name="4" file="hcluster_sg1_4_output.txt" ftype="txt" />
-                <element name="5" file="hcluster_sg1_5_output.txt" ftype="txt" />
-                <element name="6" file="hcluster_sg1_6_output.txt" ftype="txt" />
-                <element name="7" file="hcluster_sg1_7_output.txt" ftype="txt" />
-                <element name="8" file="hcluster_sg1_8_output.txt" ftype="txt" />
+                <element name="0" file="10.txt" ftype="txt" />
+                <element name="1" file="11.txt" ftype="txt" />
+                <element name="2" file="12.txt" ftype="txt" />
+                <element name="3" file="13.txt" ftype="txt" />
+                <element name="4" file="14.txt" ftype="txt" />
+                <element name="5" file="15.txt" ftype="txt" />
+                <element name="6" file="16.txt" ftype="txt" />
+                <element name="7" file="17.txt" ftype="txt" />
+                <element name="8" file="18.txt" ftype="txt" />
             </output_collection>
-            <output name="discarded" file="empty.txt" />
+            <output name="discarded_min" file="empty.txt" />
+            <output name="discarded_max" file="empty.txt" />
         </test>
     </tests>
     <help>
