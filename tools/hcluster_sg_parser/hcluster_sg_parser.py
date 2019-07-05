@@ -17,8 +17,8 @@ def main():
     parser.add_option('-M', '--max', type='int', default=sys.maxsize, help='Maximum number of cluster elements')
     options, args = parser.parse_args()
 
-    with open(args[2], 'w') as discarded_min_out:
-        with open(args[1], 'w') as discarded_max_out:
+    with open(args[2], 'w') as discarded_max_out:
+        with open(args[1], 'w') as discarded_min_out:
             with open(args[0]) as fh:
                 for line in fh:
                     line = line.rstrip()
