@@ -17,8 +17,8 @@ title: EI Galaxy tools and workflows
 email: EI.Galaxy@earlham.ac.uk
 description: >-
   Galaxy tools and workflows developed at the Earlham Institute
-baseurl: "/earlham-galaxytools" # the subpath of your site, e.g. /blog
-url: "https://tgac.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/tgac-galaxytools" # the subpath of your site, e.g. /blog
+url: "https://anilthanki.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
