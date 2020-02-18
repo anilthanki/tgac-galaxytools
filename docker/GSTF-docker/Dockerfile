@@ -13,6 +13,8 @@ ADD library_data.yml $GALAXY_ROOT/library_data.yml
 # Install the workflow
 RUN mkdir -p $GALAXY_HOME/workflows
 
+RUN pip install ephemeris
+
 # Copy workflow
 ADD workflow/gstf.ga $GALAXY_HOME/workflows/
 
