@@ -13,6 +13,9 @@ ADD library_data.yml $GALAXY_ROOT/library_data.yml
 # Install the workflow
 RUN mkdir -p $GALAXY_HOME/workflows
 
+RUN apt-get update && apt-get install -y \
+    python-pip
+
 RUN pip install ephemeris
 
 # Copy workflow
